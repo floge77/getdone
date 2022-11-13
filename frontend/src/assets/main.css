@@ -35,8 +35,37 @@ a,
   }
 }
 
+/* my custom CSS */
+
 .view-headers {
     text-align: center;
     margin-bottom: 2rem;
     margin-top: 4rem;
+}
+
+.register-login-child {
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: auto;
+  margin: 0 auto 0 auto;
+}
+
+input {
+  width: auto;
+  height: 2rem;
+  margin-bottom: 10px;
+  align-self: center;
+  background-color: var(--vt-c-text-dark-2);
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid hsla(160, 100%, 37%, 1);
+}
+
+button {
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: var(--vt-c-text-dark-2)
 }
