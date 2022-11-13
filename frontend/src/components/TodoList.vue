@@ -44,7 +44,7 @@
 
 .todolist-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-columns: auto;
     grid-auto-flow: column;
 }
@@ -53,7 +53,6 @@
     padding: 20px;
     font-size: 30px;
     text-align: center;
-
 }
 .todolist-container-header {
     text-decoration: solid;

@@ -3,21 +3,24 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
-
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Todos</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <RouterView />
+  <div class="wrapper">
+    <b-navbar class="header" fixed="top">
+      <nav class="centered-nav">
+          <RouterLink to="/">Todos</RouterLink>
+          <RouterLink to="/login">Login</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+    </b-navbar>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
+
+.centered-nav {
+  text-align: center;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -57,7 +60,7 @@ nav a:first-of-type {
   header {
     display: flex;
     place-items: top;
-    /* padding-right: calc(var(--section-gap) / 2); */
+    padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
