@@ -13,6 +13,7 @@ export class TodoRepository {
   async getTodosForUser(user: User): Promise<Todo[]> {
     return this.todoRepo
       .createQueryBuilder("todo")
+      .select(["todo.text", "todo.until", "todo.id"]) // seems to not work. Author is always returned
       .leftJoinAndSelect("todo.author", "user")
       .where("todo.authorId = :id", { id: user.id })
       .getMany();

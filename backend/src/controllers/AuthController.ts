@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import { User } from "../entity/User";
 import { UserRepository } from "../repositories/UserRepo";
-import { JwtCreator } from "../utils/jwt";
+import { createToken } from "../utils/jwt";
 
 export class AuthController {
   static async login(req: Request, res: Response) {
@@ -22,7 +22,7 @@ export class AuthController {
       res.status(401).send();
       return;
     }
-    const token: string = new JwtCreator().createToken(user);
+    const token: string = createToken(user.id, user.username);
     res.status(200).json({ token: token });
   }
 
