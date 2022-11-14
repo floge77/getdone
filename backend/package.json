@@ -24,6 +24,8 @@
    },
    "scripts": {
       "start": "ts-node src/index.ts",
+      "start-play": "ts-node src/index_test.ts",
+      "migration": "ts-node migration/CreateAdminUser.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    }
 }

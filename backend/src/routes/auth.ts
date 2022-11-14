@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { AuthController } from "../controllers/AuthController"
-import { UserRepository } from "../repositories/userRepo"
+import { UserRepository } from "../repositories/UserRepo"
 
 const router = Router()
 
