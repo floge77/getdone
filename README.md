@@ -24,3 +24,9 @@ Then you should be able to access the application via [localhost:5173](http://lo
 ## Other
 
 This project is WIP and only a playground.
+
+## Open tasks
+
+- add addTodo func
+- refactor to de-duplicate code
+- make login/logout button computed based on user logged in state
