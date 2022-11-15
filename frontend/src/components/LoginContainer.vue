@@ -29,6 +29,7 @@ export default {
 
         const result = (await response.json()) as JwtResponse;
         console.log(`successfully logged in. JWT: ${result.token}`);
+        localStorage.setItem('user', result.token)
       } catch (e) {
         console.log(`failed login for user: ${this.username}: ${e}`);
       }

@@ -11,11 +11,19 @@ export default {
   methods: {
     async getTodos() {
       try {
-        const resp = await fetch("http://localhost:3000/api/todo");
+        let token = localStorage.getItem("user");
+        if (!token) {
+          return [];
+        }
+        const resp = await fetch("http://localhost:3000/api/todo", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+            auth: token,
+          },
+        });
         const responseJson = await resp.json();
-        console.log(responseJson);
         this.todos = responseJson;
-        console.log(this.todos);
       } catch (e) {
         console.log(`could not receive todos: ${e}`);
       }
@@ -29,8 +37,8 @@ export default {
     <div class="grid-item todolist-container-header">Todo</div>
     <div class="grid-item todolist-container-header">to be done until</div>
   </div>
-  <div class="todolist-container" v-for="todo in todos" :key="todo.name">
-    <div :class="{ done: todo.done }" class="grid-item">{{ todo.name }}</div>
+  <div class="todolist-container" v-for="todo in todos" :key="todo.id">
+    <div :class="{ done: todo.done }" class="grid-item">{{ todo.text }}</div>
     <div :class="{ done: todo.done }" class="grid-item">{{ todo.until }}</div>
   </div>
 </template>

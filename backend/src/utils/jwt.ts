@@ -27,12 +27,15 @@ export function createToken(userId: number, username: string): string {
 
 export function checkJwt(req: Request, res: Response, next: NextFunction) {
   //Get the jwt token from the head
-  const token = <string>req.headers["auth"];
+  var jwt = <string>req.headers["auth"];
+  if (jwt.toLowerCase().startsWith("bearer")) {
+    jwt = jwt.slice("bearer".length).trim();
+  }
   let jwtPayload;
 
   //Try to validate the token and get data
   try {
-    jwtPayload = <any>verify(token, jwtSecret);
+    jwtPayload = <any>verify(jwt, jwtSecret);
     res.locals.jwtPayload = jwtPayload;
   } catch (error) {
     //If token is not valid, respond with 401 (unauthorized)

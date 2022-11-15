@@ -1,21 +1,23 @@
 <script lang="ts">
-import LoginContainer from "../components/LoginContainer.vue"
-import { RouterLink } from 'vue-router'
+import LoginContainer from "../components/LoginContainer.vue";
+import { RouterLink } from "vue-router";
 
 export default {
   name: "Login",
   components: {
-    LoginContainer
+    LoginContainer,
   },
-}
+};
 </script>
 
 <template>
-    <div>
-      <h1 class="view-headers">Login</h1>
-      <LoginContainer/>
-      <RouterLink to="/register" class="register-ref">Not registered yet? Register here</RouterLink>
-    </div>
+  <div>
+    <h1 class="view-headers">Login</h1>
+    <LoginContainer />
+    <RouterLink to="/register" class="register-ref"
+      >Not registered yet? Register here</RouterLink
+    >
+  </div>
 </template>
 
 <style scoped>

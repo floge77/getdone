@@ -1,22 +1,40 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+
+export default {
+  methods: {
+    logout() {
+      console.log("logging out");
+      localStorage.removeItem("user");
+    },
+  },
+  computed: {
+    userLoggedIn() {
+      let token = localStorage.getItem("user");
+      if (token) {
+        return true;
+      }
+      return false;
+    },
+  },
+};
 </script>
 
 <template>
   <div class="wrapper">
     <b-navbar class="header" fixed="top">
       <nav class="centered-nav">
-          <RouterLink to="/">Todos</RouterLink>
-          <RouterLink to="/login">Login</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
+        <RouterLink to="/">Todos</RouterLink>
+        <RouterLink to="/login" v-if="!userLoggedIn">Login</RouterLink>
+        <RouterLink to="/about" v-else @click.native="logout">Logout</RouterLink> <!-- Why is this not live updated?! -->
+        <RouterLink to="/about">Home</RouterLink>
+      </nav>
     </b-navbar>
     <RouterView />
   </div>
 </template>
 
 <style scoped>
-
 .centered-nav {
   text-align: center;
 }
